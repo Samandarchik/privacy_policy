@@ -6,7 +6,6 @@
 <meta name="format-detection" content="telephone=no">
 <title>Maxfiylik siyosati — Prava olamiz</title>
 
-<!-- Telegram WebApp SDK -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
@@ -15,30 +14,25 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* html va body — bu qatlam scroll qilmaydi, faqat container qiladi */
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+  html {
+    /* MUHIM: html'ni biroz baland qilamiz, scroll har doim mavjud bo'lsin */
+    height: calc(100% + 1px);
     overflow: hidden;
-    overscroll-behavior: none;
-    background: #fff;
   }
 
-  /* Asosiy scroll container — scroll faqat shu yerda bo'ladi */
-  .scroll-container {
-    position: fixed;
-    inset: 0;
+  body {
+    margin: 0;
+    padding: 0;
+    /* body 100vh dan baland — har doim biroz scroll bor */
+    min-height: calc(100vh + 1px);
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: contain;
-    /* Safe area (iPhone notch va home indicator uchun) */
+    overscroll-behavior: none;
+    background: #fff;
+    /* Safe area */
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
   }
 
   .content {
@@ -48,6 +42,12 @@
     padding: 40px 20px 60px;
     color: #1a1a1a;
     line-height: 1.65;
+  }
+
+  /* Yashirin spacer — sahifa har doim scroll holatida bo'lishi uchun */
+  .top-spacer {
+    height: 1px;
+    width: 100%;
   }
 
   h1 { font-size: 28px; margin-bottom: 4px; margin-top: 0; }
@@ -63,201 +63,89 @@
 </head>
 <body>
 
-<div class="scroll-container">
-  <div class="content">
+<div class="top-spacer"></div>
 
-    <h1>Maxfiylik siyosati</h1>
-    <p class="meta">Ilova: <strong>Prava olamiz</strong> · Oxirgi yangilanish: 2026-yil 9-May</p>
+<div class="content">
 
-    <p>
-      Ushbu Maxfiylik siyosati (keyingi o'rinlarda — "Siyosat") <strong>"Yaxshilik izlab" MChJ</strong>
-      (keyingi o'rinlarda — "biz", "bizning") tomonidan ishlab chiqilgan
-      <strong>"Prava olamiz"</strong> mobil ilovasi (keyingi o'rinlarda — "Ilova")
-      foydalanuvchilarining shaxsiy ma'lumotlarini qanday yig'ishimiz, ishlatishimiz va
-      himoya qilishimizni tushuntiradi.
-    </p>
+  <h1>Maxfiylik siyosati</h1>
+  <p class="meta">Ilova: <strong>Prava olamiz</strong> · Oxirgi yangilanish: 2026-yil 9-May</p>
 
-    <p>
-      Ilova haydovchilik guvohnomasi nazariy imtihoniga tayyorlanish uchun mo'ljallangan
-      o'quv vositasi hisoblanadi. Ilova hech qanday davlat organi yoki rasmiy muassasaga
-      bog'liq emas — bu xususiy o'quv loyihasi.
-    </p>
+  <p>
+    Ushbu Maxfiylik siyosati (keyingi o'rinlarda — "Siyosat") <strong>"Yaxshilik izlab" MChJ</strong>
+    (keyingi o'rinlarda — "biz", "bizning") tomonidan ishlab chiqilgan
+    <strong>"Prava olamiz"</strong> mobil ilovasi (keyingi o'rinlarda — "Ilova")
+    foydalanuvchilarining shaxsiy ma'lumotlarini qanday yig'ishimiz, ishlatishimiz va
+    himoya qilishimizni tushuntiradi.
+  </p>
 
-    <h2>1. Biz qanday ma'lumotlarni yig'amiz</h2>
+  <p>
+    Ilova haydovchilik guvohnomasi nazariy imtihoniga tayyorlanish uchun mo'ljallangan
+    o'quv vositasi hisoblanadi. Ilova hech qanday davlat organi yoki rasmiy muassasaga
+    bog'liq emas — bu xususiy o'quv loyihasi.
+  </p>
 
-    <h3>1.1. Siz bizga taqdim etadigan ma'lumotlar</h3>
-    <ul>
-      <li><strong>Ism va familiya</strong> — akkauntingizni shaxsiylashtirish uchun.</li>
-      <li><strong>Telefon raqami</strong> — Ilovaga kirish (login) va akkauntni tasdiqlash uchun.</li>
-      <li><strong>Profil rasmi</strong> — faqat siz xohlasangiz va o'zingiz yuklasangiz. Bu ixtiyoriy.</li>
-    </ul>
+  <h2>1. Biz qanday ma'lumotlarni yig'amiz</h2>
 
-    <h3>1.2. Ilovadan foydalanish jarayonida yig'iladigan ma'lumotlar</h3>
-    <ul>
-      <li><strong>Test natijalari va o'qish jarayoni</strong> — siz yechgan testlar, to'g'ri/noto'g'ri javoblar,
-        progress, statistika. Bu sizga o'z natijangizni kuzatib borishingiz uchun saqlanadi.</li>
-    </ul>
+  <h3>1.1. Siz bizga taqdim etadigan ma'lumotlar</h3>
+  <ul>
+    <li><strong>Ism va familiya</strong> — akkauntingizni shaxsiylashtirish uchun.</li>
+    <li><strong>Telefon raqami</strong> — Ilovaga kirish (login) va akkauntni tasdiqlash uchun.</li>
+    <li><strong>Profil rasmi</strong> — faqat siz xohlasangiz va o'zingiz yuklasangiz. Bu ixtiyoriy.</li>
+  </ul>
 
-    <h3>1.3. Biz yig'<u>maydigan</u> ma'lumotlar</h3>
-    <ul>
-      <li>Pasport ma'lumotlari, JSHSHIR yoki shunga o'xshash hujjat ma'lumotlari.</li>
-      <li>Bank kartasi raqami yoki to'lov ma'lumotlari (Ilova ichida to'lov tizimi yo'q;
-        kelajakda qo'shilsa, ushbu Siyosat yangilanadi).</li>
-      <li>Geolokatsiya (joylashuv ma'lumotlari).</li>
-      <li>Telefon kontaktlari, SMS yoki qo'ng'iroqlar tarixi.</li>
-    </ul>
+  <h3>1.2. Ilovadan foydalanish jarayonida yig'iladigan ma'lumotlar</h3>
+  <ul>
+    <li><strong>Test natijalari va o'qish jarayoni</strong> — siz yechgan testlar, to'g'ri/noto'g'ri javoblar,
+      progress, statistika. Bu sizga o'z natijangizni kuzatib borishingiz uchun saqlanadi.</li>
+  </ul>
 
-    <h2>2. Ma'lumotlardan qanday foydalanamiz</h2>
-    <p>Yig'ilgan ma'lumotlar faqat quyidagi maqsadlar uchun ishlatiladi:</p>
-    <ul>
-      <li>Sizga Ilovaga kirish va undan foydalanish imkonini berish;</li>
-      <li>Test natijalaringizni saqlash va sizga ko'rsatish;</li>
-      <li>O'qish jarayoningizni shaxsiylashtirish (masalan, sizga mos darslar tavsiyasi);</li>
-      <li>Ilova ishlashidagi xatoliklarni aniqlash va bartaraf etish;</li>
-      <li>Sizga texnik yordam ko'rsatish, agar siz biz bilan bog'lansangiz.</li>
-    </ul>
+  <h3>1.3. Biz yig'<u>maydigan</u> ma'lumotlar</h3>
+  <ul>
+    <li>Pasport ma'lumotlari, JSHSHIR yoki shunga o'xshash hujjat ma'lumotlari.</li>
+    <li>Bank kartasi raqami yoki to'lov ma'lumotlari (Ilova ichida to'lov tizimi yo'q;
+      kelajakda qo'shilsa, ushbu Siyosat yangilanadi).</li>
+    <li>Geolokatsiya (joylashuv ma'lumotlari).</li>
+    <li>Telefon kontaktlari, SMS yoki qo'ng'iroqlar tarixi.</li>
+  </ul>
 
-    <h2>3. Ma'lumotlarni uchinchi shaxslar bilan ulashish</h2>
-    <p>
-      <strong>Biz sizning shaxsiy ma'lumotlaringizni hech qaysi uchinchi shaxsga, kompaniyaga,
-      reklama beruvchilarga yoki davlat organlariga sotmaymiz, ijaraga bermaymiz va oshkor qilmaymiz.</strong>
-    </p>
-    <p>Yagona istisnolar:</p>
-    <ul>
-      <li>Agar O'zbekiston Respublikasi qonunchiligiga muvofiq vakolatli organ rasmiy talab yuborsa;</li>
-      <li>Sizning aniq va yozma roziligingiz bilan.</li>
-    </ul>
+  <h2>2. Ma'lumotlardan qanday foydalanamiz</h2>
+  <p>Yig'ilgan ma'lumotlar faqat quyidagi maqsadlar uchun ishlatiladi:</p>
+  <ul>
+    <li>Sizga Ilovaga kirish va undan foydalanish imkonini berish;</li>
+    <li>Test natijalaringizni saqlash va sizga ko'rsatish;</li>
+    <li>O'qish jarayoningizni shaxsiylashtirish (masalan, sizga mos darslar tavsiyasi);</li>
+    <li>Ilova ishlashidagi xatoliklarni aniqlash va bartaraf etish;</li>
+    <li>Sizga texnik yordam ko'rsatish, agar siz biz bilan bog'lansangiz.</li>
+  </ul>
 
-    <h2>4. Ma'lumotlarni saqlash va xavfsizlik</h2>
-    <ul>
-      <li>Ma'lumotlaringiz xavfsiz serverlarda saqlanadi va parollangan kanallar (HTTPS/TLS) orqali uzatiladi.</li>
-      <li>Akkauntingizga faqat siz va vakolatli xodimlarimiz kira oladi.</li>
-      <li>Akkauntingiz parolini hech kim bilan baham ko'rmaslik sizning mas'uliyatingizdir.</li>
-      <li>Ma'lumotlaringiz akkauntingiz faol bo'lgunicha saqlanadi. Akkauntni o'chirsangiz, ma'lumotlar
-        oqilona muddat ichida tizimdan o'chiriladi.</li>
-    </ul>
+  <h2>3. Ma'lumotlarni uchinchi shaxslar bilan ulashish</h2>
+  <p>
+    <strong>Biz sizning shaxsiy ma'lumotlaringizni hech qaysi uchinchi shaxsga, kompaniyaga,
+    reklama beruvchilarga yoki davlat organlariga sotmaymiz, ijaraga bermaymiz va oshkor qilmaymiz.</strong>
+  </p>
+  <p>Yagona istisnolar:</p>
+  <ul>
+    <li>Agar O'zbekiston Respublikasi qonunchiligiga muvofiq vakolatli organ rasmiy talab yuborsa;</li>
+    <li>Sizning aniq va yozma roziligingiz bilan.</li>
+  </ul>
 
-    <h2>5. Akkauntdan foydalanish qoidalari</h2>
-    <p>
-      Akkauntning xavfsizligi va o'quv jarayonining adolatli kechishi uchun quyidagi qoidalar
-      belgilangan:
-    </p>
+  <h2>4. Ma'lumotlarni saqlash va xavfsizlik</h2>
+  <ul>
+    <li>Ma'lumotlaringiz xavfsiz serverlarda saqlanadi va parollangan kanallar (HTTPS/TLS) orqali uzatiladi.</li>
+    <li>Akkauntingizga faqat siz va vakolatli xodimlarimiz kira oladi.</li>
+    <li>Akkauntingiz parolini hech kim bilan baham ko'rmaslik sizning mas'uliyatingizdir.</li>
+    <li>Ma'lumotlaringiz akkauntingiz faol bo'lgunicha saqlanadi. Akkauntni o'chirsangiz, ma'lumotlar
+      oqilona muddat ichida tizimdan o'chiriladi.</li>
+  </ul>
 
-    <h3>5.1. Bitta akkaunt — bitta foydalanuvchi</h3>
-    <ul>
-      <li>Bitta akkauntdan bir vaqtning o'zida bir nechta kishi foydalanishi <strong>qat'iyan
-        taqiqlanadi</strong>.</li>
-      <li>Akkaunt faqat ro'yxatdan o'tgan shaxsga tegishli bo'lib, uni boshqa kishi bilan ulashish,
-        sotish yoki vaqtinchalik berish mumkin emas.</li>
-      <li>Ushbu qoida buzilganligi aniqlansa, biz akkauntni vaqtinchalik bloklash yoki butunlay
-        o'chirish huquqini saqlab qolamiz.</li>
-    </ul>
+  <h2>5. Akkauntdan foydalanish qoidalari</h2>
+  <p>
+    Akkauntning xavfsizligi va o'quv jarayonining adolatli kechishi uchun quyidagi qoidalar
+    belgilangan:
+  </p>
 
-    <h3>5.2. Offline o'quvchilar uchun Face ID talabi</h3>
-    <ul>
-      <li>Offline (yuzma-yuz) o'quv kursiga qatnashayotgan o'quvchilar uchun Ilovaga kirishda
-        <strong>Face ID qurilmasi orqali yuzni tasdiqlash majburiy</strong>.</li>
-      <li>Profil faqat Face ID qurilmasiga yuzingiz tasdiqlangandan so'ng ishga tushadi.
-        Yuzingiz tasdiqlanmaguncha profil va o'quv materiallari ochilmaydi.</li>
-      <li>Bu chora akkauntning faqat haqiqiy egasi tomonidan ishlatilishini ta'minlash uchun
-        qo'llaniladi.</li>
-    </ul>
-
-    <h3>5.3. Online o'quvchilar uchun</h3>
-    <ul>
-      <li>Online o'quvchilar Ilovaga istalgan vaqtda va istalgan joydan login qilishlari mumkin.</li>
-      <li>Online foydalanuvchilar uchun Face ID talab qilinmaydi — odatiy login (telefon raqami
-        va tasdiqlash kodi) yetarli.</li>
-    </ul>
-
-    <h3>5.4. Face ID ma'lumotlari haqida</h3>
-    <p>
-      Face ID orqali olingan biometrik ma'lumotlar faqat shaxsni tasdiqlash uchun ishlatiladi.
-      Yuz tasviri yoki biometrik shablon doimiy saqlanmaydi va uchinchi shaxslarga uzatilmaydi.
-      Tasdiqlash jarayoni mahalliy Face ID qurilmasi orqali amalga oshiriladi.
-    </p>
-
-    <h2>6. Sizning huquqlaringiz</h2>
-    <p>Siz istalgan vaqtda quyidagi huquqlardan foydalanishingiz mumkin:</p>
-    <ul>
-      <li>Biz saqlayotgan ma'lumotlaringizni ko'rish;</li>
-      <li>Noto'g'ri yoki eskirgan ma'lumotlarni tuzatish;</li>
-      <li>Akkauntingizni va u bilan bog'liq ma'lumotlarni butunlay o'chirish;</li>
-      <li>Profil rasmingizni olib tashlash;</li>
-      <li>Ma'lumotlaringizdan foydalanishga rozilikni qaytarib olish.</li>
-    </ul>
-    <p>Ushbu huquqlardan foydalanish uchun quyidagi email orqali bog'laning:
-      <a href="mailto:uzaidev@icloud.com">uzaidev@icloud.com</a>.</p>
-
-    <h2>7. Bolalar maxfiyligi</h2>
-    <p>
-      Ilovada qat'iy yosh chegarasi belgilanmagan, chunki haydovchilik guvohnomasiga tayyorlanish
-      asosan voyaga yetgan yoki yetishga yaqin foydalanuvchilarga mo'ljallangan. Shunga qaramay,
-      agar bola Ilovadan foydalanmoqchi bo'lsa, ota-ona yoki qonuniy vakil rozilik berishi kerak deb hisoblaymiz.
-      Agar bolangizning ma'lumotlari bizning roziligingizsiz yig'ilganini bilsangiz, biz bilan bog'laning —
-      ma'lumotlarni o'chirib beramiz.
-    </p>
-
-    <h2>8. To'lovlar haqida</h2>
-    <p>
-      Hozirgi vaqtda Ilovaning pullik yoki bepul ekanligi yakuniy hal qilinmagan.
-      Kelajakda to'lov tizimi qo'shilsa, to'lov ma'lumotlari ishonchli to'lov provayderlari
-      orqali qayta ishlanadi va ushbu Siyosat yangilanib, sizga xabar beriladi.
-    </p>
-
-    <h2>9. Siyosatga o'zgartirishlar</h2>
-    <p>
-      Biz vaqti-vaqti bilan ushbu Maxfiylik siyosatini yangilashimiz mumkin. O'zgarishlar bo'lganda,
-      ushbu sahifadagi "Oxirgi yangilanish" sanasi yangilanadi. Muhim o'zgarishlar haqida sizga
-      Ilova orqali yoki email orqali xabar beriladi. Ilovadan foydalanishni davom ettirishingiz
-      yangilangan Siyosatga roziligingiz hisoblanadi.
-    </p>
-
-    <h2>10. Biz bilan bog'lanish</h2>
-    <div class="contact">
-      <p>
-        Maxfiylik siyosatiga oid har qanday savol, taklif yoki shikoyatingiz bo'lsa, biz bilan
-        bemalol bog'laning:
-      </p>
-      <ul>
-        <li><strong>Tashkilot:</strong> "Yaxshilik izlab" MChJ</li>
-        <li><strong>Ilova:</strong> Prava olamiz</li>
-        <li><strong>Email:</strong> <a href="mailto:uzaidev@icloud.com">uzaidev@icloud.com</a></li>
-      </ul>
-    </div>
-
-  </div>
-</div>
-
-<script>
-  (function() {
-    const tg = window.Telegram?.WebApp;
-    if (!tg) return;
-
-    // Telegram WebApp'ni ishga tushirish
-    tg.ready();
-
-    // To'liq balandlikka kengaytirish
-    tg.expand();
-
-    // ENG MUHIMI — pastga swipe'ni o'chirish (Bot API 7.7+)
-    if (typeof tg.disableVerticalSwipes === 'function') {
-      tg.disableVerticalSwipes();
-    }
-
-    // Fullscreen rejim (Bot API 8.0+) — ixtiyoriy
-    if (typeof tg.requestFullscreen === 'function') {
-      try { tg.requestFullscreen(); } catch (e) {}
-    }
-
-    // body'da bounce/elastic scroll'ni o'chirish (faqat container scroll qilsin)
-    document.body.addEventListener('touchmove', function(e) {
-      if (e.target === document.body || e.target === document.documentElement) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-  })();
-</script>
-
-</body>
-</html>
+  <h3>5.1. Bitta akkaunt — bitta foydalanuvchi</h3>
+  <ul>
+    <li>Bitta akkauntdan bir vaqtning o'zida bir nechta kishi foydalanishi <strong>qat'iyan
+      taqiqlanadi</strong>.</li>
+    <li>Akkaunt faqat ro'yxatdan o'tgan shaxsga tegishli bo'lib,
