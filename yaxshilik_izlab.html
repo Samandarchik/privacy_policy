@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maxfiylik siyosati — Yaxshilik Izlab</title>
+  <meta name="description" content="Yaxshilik Izlab xayriya platformasi (sayt, Telegram Mini App va mobil ilova) maxfiylik siyosati. Privacy Policy · Политика конфиденциальности.">
+  <meta name="theme-color" content="#EDEFE4">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23165B3D'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23fff' stroke-width='2.5'/%3E%3Ccircle cx='34' cy='22' r='3' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Brend tokenlari — web/tailwind.config.js bilan bir xil */
+    :root {
+      --paper: #EDEFE4;
+      --card: #F4F4EC;
+      --ink: #0E2318;
+      --ink-2: #4E665A;
+      --ink-3: #84998C;
+      --line: #DDE0D0;
+      --anor: #165B3D;
+      --anor-dark: #0F4A30;
+      --anor-soft: #D5EAD9;
+      --on-anor: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #0C1611;
+        --card: #13201A;
+        --ink: #E4ECE6;
+        --ink-2: #A9BCB0;
+        --ink-3: #7C9186;
+        --line: #243329;
+        --anor: #7CC7A0;
+        --anor-dark: #9AD6B6;
+        --anor-soft: #1B3326;
+        --on-anor: #0C1611;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 28px 20px 72px;
+    }
+
+    /* Brend qatori */
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .brand-name svg { width: 36px; height: 36px; flex: none; }
+    .brand-site { font-size: 14px; color: var(--ink-2); }
+
+    /* Til tanlash */
+    .langs {
+      display: inline-flex;
+      gap: 4px;
+      margin: 22px 0 6px;
+      padding: 4px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+    .langs button {
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-2);
+      background: transparent;
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 16px;
+      cursor: pointer;
+    }
+    .langs button[aria-pressed="true"] { background: var(--anor); color: var(--on-anor); }
+    .langs button:focus-visible { outline: 2px solid var(--anor); outline-offset: 2px; }
+
+    /* Matn */
+    h1 {
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 6vw, 40px);
+      line-height: 1.15;
+      margin: 18px 0 6px;
+    }
+    .updated { font-size: 14px; color: var(--ink-3); margin: 0 0 18px; }
+    .lead { font-size: 17px; color: var(--ink-2); margin: 0 0 22px; }
+    h2 {
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-size: 23px;
+      line-height: 1.3;
+      margin: 44px 0 12px;
+      scroll-margin-top: 16px;
+    }
+    h2 .n { color: var(--anor); margin-right: 8px; }
+    h3 { font-size: 16px; font-weight: 700; margin: 26px 0 8px; }
+    p { margin: 0 0 12px; }
+    ul { padding-left: 22px; margin: 0 0 12px; }
+    li { margin-bottom: 6px; }
+    a { color: var(--anor); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--anor-dark); }
+    strong { font-weight: 600; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .88em;
+      padding: 1px 6px;
+      border-radius: 6px;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+
+    /* Qisqacha */
+    .summary {
+      background: var(--anor-soft);
+      border-radius: 18px;
+      padding: 20px 22px 12px;
+      margin: 0 0 8px;
+    }
+    .summary h2 { margin: 0 0 10px; font-size: 19px; }
+    .summary ul { list-style: none; padding: 0; }
+    .summary li { position: relative; padding-left: 28px; margin-bottom: 10px; }
+    .summary li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--anor) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 12px no-repeat;
+    }
+
+    /* Ro'yxat-jadval (telefonda ustma-ust) */
+    .rows {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .rows li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 4px 22px;
+      margin: 0;
+      padding: 14px 18px;
+      border-top: 1px solid var(--line);
+    }
+    .rows li:first-child { border-top: 0; }
+    .rows .k { font-weight: 600; }
+    .rows .v { color: var(--ink-2); }
+    .rows.head li:first-child {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .rows.head li:first-child .k, .rows.head li:first-child .v { font-weight: 700; color: var(--ink-3); }
+    .tag {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.7;
+      white-space: nowrap;
+      vertical-align: 1px;
+      background: var(--anor-soft);
+      color: var(--anor);
+    }
+    .tag.opt { background: transparent; border: 1px solid var(--line); color: var(--ink-2); }
+
+    .note {
+      border-left: 3px solid var(--anor);
+      padding: 2px 0 2px 16px;
+      margin: 16px 0;
+      color: var(--ink-2);
+    }
+
+    /* Aloqa */
+    .contacts {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+    .contacts li {
+      margin: 0;
+      padding: 12px 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .contacts span { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+    .contacts a { font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+
+    footer {
+      margin-top: 56px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--ink-3);
+    }
+
+    @media (max-width: 600px) {
+      body { font-size: 15.5px; }
+      .rows li { grid-template-columns: 1fr; }
+      .rows.head li:first-child { display: none; }
+      .rows.head li:nth-child(2) { border-top: 0; }
+      .summary { padding: 18px 18px 10px; }
+    }
+    @media print {
+      body { background: #fff; color: #000; }
+      .langs { display: none; }
+      .summary, .rows, .contacts li { background: #fff; }
+      a { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="brand">
+      <a class="brand-name" href="https://yaxshilik-izlab.uzaidev.uz">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#165B3D"/>
+          <circle cx="32" cy="32" r="22" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <g fill="#fff">
+            <circle cx="34" cy="22" r="3"/>
+            <path d="M33 25.5c1.4 0 2.4 1 2.6 2.3l1 5.2 3 2.7c.7.6.8 1.7.2 2.4-.6.7-1.7.8-2.4.2l-3-2.8c-.4-.3-.6-.8-.7-1.2l-.3-1.7-1.9 4.4 1.9 6.6c.3.9-.3 1.8-1.1 2.1-.9.3-1.8-.3-2.1-1.1l-2.1-7.2c-.2-.5-.1-1 .1-1.5l1.5-3.5-2.4 1.4-1.2 2.9c-.4.9-1.3 1.2-2.2.9-.9-.4-1.2-1.3-.9-2.2l1.4-3.3c.2-.4.5-.8 1-1l4-2.4c.6-.4 1.2-.6 1.6-.6z"/>
+          </g>
+          <g fill="#fff" opacity="0.8">
+            <ellipse cx="22" cy="45" rx="1.8" ry="2.6" transform="rotate(20 22 45)"/>
+            <ellipse cx="27" cy="48" rx="1.8" ry="2.6" transform="rotate(20 27 48)"/>
+          </g>
+        </svg>
+        Yaxshilik Izlab
+      </a>
+      <span class="brand-site">yaxshilik-izlab.uzaidev.uz</span>
+    </header>
+
+    <div class="langs" role="group" aria-label="Til / Язык / Language">
+      <button type="button" data-lang="uz" aria-pressed="true">O'zbekcha</button>
+      <button type="button" data-lang="ru" aria-pressed="false">Русский</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+
+    <!-- ===================== O'ZBEKCHA ===================== -->
+    <main id="lang-uz" lang="uz" data-title="Maxfiylik siyosati — Yaxshilik Izlab">
+      <h1>Maxfiylik siyosati</h1>
+      <p class="updated">Oxirgi yangilanish: 2026-yil 12-sentabr</p>
+      <p class="lead">
+        Ushbu siyosat «Yaxshilik Izlab» xayriya platformasi foydalanuvchilar haqidagi qanday
+        ma'lumotlarni yig'ishini, ular nima uchun ishlatilishini, qancha saqlanishini va qanday
+        himoya qilinishini tushuntiradi.
+      </p>
+
+      <section class="summary">
+        <h2>Qisqacha</h2>
+        <ul>
+          <li>Ro'yxatdan o'tish shart emas — login va parol yo'q.</li>
+          <li>Karta ma'lumotlaringizni biz ko'rmaymiz: ular faqat Click yoki Payme sahifasida kiritiladi.</li>
+          <li>Ism va telefon ixtiyoriy. «Anonim» belgilasangiz, ismingiz hech qayerda ko'rsatilmaydi.</li>
+          <li>Ma'lumotlaringizni sotmaymiz, reklama va kuzatuv (analitika) xizmatlaridan foydalanmaymiz.</li>
+        </ul>
+      </section>
+
+      <h2 id="uz-1"><span class="n">1.</span>Umumiy qoidalar</h2>
+      <p>Siyosat quyidagilarga tegishli (keyingi o'rinlarda birgalikda — «Platforma»):</p>
+      <ul>
+        <li>sayt <a href="https://yaxshilik-izlab.uzaidev.uz">yaxshilik-izlab.uzaidev.uz</a>;</li>
+        <li>Telegram bot va Mini App <a href="https://t.me/yaxshilikizlab_bot">@yaxshilikizlab_bot</a>;</li>
+        <li>«Yaxshilik Izlab» mobil ilovasi (Android va iOS).</li>
+      </ul>
+      <p>
+        Ma'lumotlar operatori — «Yaxshilik Izlab» platformasi jamoasi (keyingi o'rinlarda — «biz»).
+        Texnik ishlab chiquvchi — UzAiDev. Ma'lumotlar O'zbekiston Respublikasining «Shaxsga doir
+        ma'lumotlar to'g'risida»gi Qonuni (2019-yil 2-iyuldagi O'RQ-547-son) talablariga muvofiq
+        qayta ishlanadi.
+      </p>
+      <p>
+        Platformadan foydalanib va yordam yuborib, siz ma'lumotlaringiz ushbu siyosatda yozilgan
+        tartibda qayta ishlanishiga rozilik bildirasiz. Rozi bo'lmasangiz, iltimos, Platformadan
+        foydalanmang.
+      </p>
+
+      <h2 id="uz-2"><span class="n">2.</span>Qanday ma'lumotlar yig'iladi</h2>
+
+      <h3>2.1. Yordam yuborganingizda</h3>
+      <ul class="rows head">
+        <li><div class="k">Ma'lumot</div><div class="v">Nima uchun</div></li>
+        <li>
+          <div class="k">Summa, to'lov usuli (Click, Payme yoki karta), sana va vaqt, kimga yordam berilgani <span class="tag">majburiy</span></div>
+          <div class="v">To'lovni amalga oshirish, yig'ilgan summani ko'rsatish, hisobot</div>
+        </li>
+        <li>
+          <div class="k">To'lov tizimidagi tranzaksiya raqami <span class="tag">avtomatik</span></div>
+          <div class="v">To'lovni tasdiqlash va chek berish</div>
+        </li>
+        <li>
+          <div class="k">Ismingiz <span class="tag opt">ixtiyoriy</span></div>
+          <div class="v">Chekda va «Jonli yordam oqimi»da qisqartirilgan holda ko'rsatish</div>
+        </li>
+        <li>
+          <div class="k">Telefon raqamingiz <span class="tag opt">ixtiyoriy</span></div>
+          <div class="v">To'lov bo'yicha muammo bo'lsa, siz bilan bog'lanish</div>
+        </li>
+      </ul>
+
+      <h3>2.2. Telegram orqali (bot va Mini App)</h3>
+      <p>
+        Platformani Telegram ichida ochganingizda Telegram bizga imzolangan ma'lumot beradi:
+        Telegram ID, ism-familiya, foydalanuvchi nomi (username), interfeys tili va Premium belgisi.
+        Imzo bot kaliti bilan tekshiriladi — boshqa birov sizning nomingizdan yordam yubora olmaydi.
+      </p>
+      <p>
+        Telefon raqamingiz faqat siz «Telefon raqamni ulashish» tugmasini bossangiz olinadi va
+        keyingi safar qayta so'ralmasligi uchun saqlanadi.
+      </p>
+      <p>
+        Bu ma'lumotlar «Mening yordamlarim» bo'limida yordamlaringiz tarixini ko'rsatish hamda
+        to'lovdan keyin bot orqali rahmat xabari va chek havolasini yuborish uchun ishlatiladi.
+      </p>
+
+      <h3>2.3. Mobil ilovada</h3>
+      <p>Mobil ilovada hisob (akkaunt) yo'q. Quyidagilar faqat telefoningiz xotirasida saqlanadi va serverga yuborilmaydi:</p>
+      <ul>
+        <li>sevimli (saqlangan) insonlar ro'yxati;</li>
+        <li>keyingi safar formani to'ldirish uchun ism va telefon (agar kiritsangiz);</li>
+        <li>yordamlaringiz tarixi (yordam raqami, summa, holat) — «Yordamlarim» bo'limi uchun.</li>
+      </ul>
+      <p>
+        Yakunlanmagan to'lov holatini yangilash uchun ilova serverga faqat yordam raqamini yuboradi.
+        To'lov ma'lumotlari (2.1-band) serverga faqat yordam yuborayotganingizda jo'natiladi.
+      </p>
+      <p>
+        Ilova faqat Internet ruxsatidan foydalanadi. Kamera, joylashuv, kontaktlar, mikrofon,
+        fayllar yoki reklama identifikatoriga ruxsat so'ralmaydi, push-bildirishnomalar yuborilmaydi.
+      </p>
+
+      <h3>2.4. Texnik ma'lumotlar</h3>
+      <p>
+        Har qanday veb-xizmat kabi server so'rovni qayta ishlashda IP manzil, brauzer yoki ilova
+        turi va so'rov vaqtini ko'radi. Ular xavfsizlik (hujum va spamdan himoya, so'rovlar sonini
+        cheklash) va xatolarni topish uchun ishlatiladi.
+      </p>
+      <p>
+        Click va Payme bilan bo'lgan har bir so'rov nizoli holatlarda dalil bo'lishi uchun to'lov
+        jurnaliga yoziladi. Jurnalda telefon va karta raqamlari maskalanadi, imzo va parollar
+        umuman yozilmaydi.
+      </p>
+
+      <h3>2.5. Karta orqali o'tkazma</h3>
+      <p>
+        Bank ilovasidan yig'uvchining Uzcard yoki Humo kartasiga pul o'tkazsangiz, biz siz haqingizda
+        hech qanday shaxsiy ma'lumot olmaymiz. Bank karta egasiga yuboradigan xabardan faqat summa,
+        vaqt va qabul qiluvchi kartaning oxirgi 4 raqami olinadi; bunday yordam doim «Anonim»
+        sifatida ko'rsatiladi.
+      </p>
+
+      <h3>2.6. Biz yig'maydigan ma'lumotlar</h3>
+      <ul>
+        <li>bank kartangiz raqami, amal qilish muddati, CVV/CVC va SMS-kodlar — ular faqat Click yoki Payme sahifasida kiritiladi va bizga yetib kelmaydi;</li>
+        <li>parollar (donorlar uchun hisob yo'q);</li>
+        <li>joylashuv, kontaktlar ro'yxati, rasm va fayllar;</li>
+        <li>biometrik ma'lumotlar va reklama identifikatorlari.</li>
+      </ul>
+
+      <h2 id="uz-3"><span class="n">3.</span>Yordam oluvchilar haqidagi ma'lumotlar</h2>
+      <p>
+        Platformaning maqsadi — muhtoj insonlarning hikoyasini ko'rsatib, ularga yordam yig'ish.
+        Shu sababli inson sahifasida ism, yosh, hudud, rasmlar, hikoya, kasallik yoki ehtiyoj
+        tavsifi, davolanish muassasasi, kerakli va yig'ilgan summa ko'rsatiladi. «Uy qurilishi»
+        yo'nalishida oila haqidagi ma'lumotlar ham beriladi: yashash hududi, oila a'zolari soni,
+        farzandlarning yoshi, asosiy boquvchi, onaning F.I.Sh. va aloqa uchun mas'ul vakil.
+        Karta orqali yordam uchun yig'uvchi karta raqami va karta egasining ismi ko'rsatilishi mumkin.
+      </p>
+      <ul>
+        <li>Bu ma'lumotlar faqat insonning o'zi yoki uning qonuniy vakili (voyaga yetmaganlar uchun — ota-onasi yoki vasiysi) roziligi bilan joylanadi.</li>
+        <li>Sog'liq haqidagi ma'lumotlar yordam so'rovini tushuntirish uchun zarur bo'lgan hajmdagina ko'rsatiladi.</li>
+        <li>Inson yoki uning vakili istalgan vaqtda ma'lumotni tuzatish, qisqartirish yoki sahifani yopishni so'rashi mumkin. Tushgan yordamlar bo'yicha moliyaviy yozuvlar hisobot uchun saqlanadi, sahifa esa ommaviy ko'rinishdan olib tashlanadi.</li>
+      </ul>
+      <p>Loyiha jamoasi a'zolarining ismi, lavozimi va rasmi ham ularning roziligi bilan saytda ko'rsatiladi.</p>
+
+      <h2 id="uz-4"><span class="n">4.</span>Ma'lumotlardan foydalanish maqsadlari</h2>
+      <ul>
+        <li>yordamni qabul qilish va to'lovni tasdiqlash;</li>
+        <li>yig'ilgan va qolgan summani hamda natijalarni ochiq ko'rsatish;</li>
+        <li>chek berish va Telegram orqali rahmat xabarini yuborish;</li>
+        <li>to'lov bo'yicha muammo bo'lsa, siz bilan bog'lanish;</li>
+        <li>firibgarlik, hujum va suiiste'moldan himoya qilish;</li>
+        <li>moliyaviy hisobot va qonun talablarini bajarish.</li>
+      </ul>
+      <p class="note">
+        Ma'lumotlaringiz reklama, marketing yoki profil tuzish uchun ishlatilmaydi, ular asosida
+        avtomatlashtirilgan qarorlar qabul qilinmaydi.
+      </p>
+
+      <h2 id="uz-5"><span class="n">5.</span>Nima ochiq ko'rinadi</h2>
+      <p>Shaffoflik uchun har bir to'langan yordam ochiq ko'rsatiladi — lekin himoyalangan holda:</p>
+      <ul>
+        <li>«Jonli yordam oqimi»da va chekda: summa, kimga, sana va qisqartirilgan ism (masalan, «Aziz K.»). «Anonim» tanlansa — faqat «Anonim».</li>
+        <li>Telefon raqamingiz va Telegram ID hech qachon ochiq ko'rsatilmaydi.</li>
+        <li>Chekni (<code>/chek/…</code>) havolasini bilgan kishi ochishi mumkin; to'lanmagan yozuv uchun tafsilot ko'rsatilmaydi.</li>
+        <li>Har bir to'lov haqida loyiha jamoasining ichki Telegram guruhiga xabar yuboriladi: summa, kimga, to'lov turi va — yordam anonim bo'lmasa — ismingiz va Telegram username'ingiz. Telefon raqami doim maskalangan holda. Guruh faqat hisob-kitob va nazorat uchun.</li>
+      </ul>
+
+      <h2 id="uz-6"><span class="n">6.</span>Uchinchi tomonlarga berish</h2>
+      <p>Biz ma'lumotlaringizni sotmaymiz va ijaraga bermaymiz. Ular faqat xizmat ishlashi uchun zarur hajmda uzatiladi:</p>
+      <ul class="rows head">
+        <li><div class="k">Xizmat</div><div class="v">Nima uchun va nima uzatiladi</div></li>
+        <li><div class="k">Click</div><div class="v">To'lov. Summa va yordam raqami uzatiladi; karta ma'lumotlarini Click o'zi qayta ishlaydi.</div></li>
+        <li><div class="k">Payme</div><div class="v">To'lov. Summa va yordam raqami uzatiladi; karta ma'lumotlarini Payme o'zi qayta ishlaydi.</div></li>
+        <li><div class="k">Telegram</div><div class="v">Bot, Mini App va xabarlar (rahmat xabari, chek havolasi, jamoa guruhidagi e'lon). Saytda Telegram Web App SDK yuklanadi.</div></li>
+        <li><div class="k">Google Fonts</div><div class="v">Saytda shriftlarni yuklash — bunda IP manzilingiz Google'ga ko'rinadi. Mobil ilovada shriftlar ilova ichida, so'rov yuborilmaydi.</div></li>
+        <li><div class="k">Hosting provayderi</div><div class="v">Platforma ma'lumotlari saqlanadigan serverlar.</div></li>
+      </ul>
+      <p>
+        Har bir xizmat o'z maxfiylik siyosatiga ega. Platformada reklama tarmoqlari, analitika va
+        kuzatuv vositalari (Google Analytics, Firebase, Facebook SDK va h.k.) yo'q.
+      </p>
+      <p>Qonunda belgilangan hollarda ma'lumotlar vakolatli davlat organlarining rasmiy so'roviga ko'ra berilishi mumkin.</p>
+      <p>
+        <strong>Chegaradan tashqariga uzatish.</strong> Telegram, Google va hosting provayderining
+        serverlari O'zbekistondan tashqarida joylashgan bo'lishi mumkin. Platformadan foydalanib,
+        siz ma'lumotlar shu xizmatlar orqali uzatilishiga rozilik bildirasiz.
+      </p>
+
+      <h2 id="uz-7"><span class="n">7.</span>Saqlash muddati</h2>
+      <ul class="rows head">
+        <li><div class="k">Ma'lumot</div><div class="v">Muddat</div></li>
+        <li><div class="k">To'lov yozuvlari (summa, sana, kimga, ism, telefon)</div><div class="v">Moliyaviy hisobot va qonun talab qiladigan muddat davomida. So'rovingizga ko'ra ism va telefon o'chiriladi, yozuv anonim qoladi.</div></li>
+        <li><div class="k">Telegram profil (bot foydalanuvchisi)</div><div class="v">Botdan foydalanishingiz davomida yoki o'chirishni so'raguningizcha.</div></li>
+        <li><div class="k">To'lov jurnali (maskalangan)</div><div class="v">To'lov yozuvlari bilan birga — nizolarni hal qilish uchun.</div></li>
+        <li><div class="k">Server jurnallari (IP, vaqt)</div><div class="v">14 kun, keyin avtomatik o'chiriladi.</div></li>
+        <li><div class="k">Ma'lumotlar bazasining zaxira nusxalari</div><div class="v">Har kuni olinadi, 14 kun saqlanadi.</div></li>
+        <li><div class="k">Qurilmadagi ma'lumotlar (ilova, brauzer xotirasi)</div><div class="v">O'zingiz o'chirguningizcha yoki ilovani o'chirib tashlaguningizcha.</div></li>
+      </ul>
+
+      <h2 id="uz-8"><span class="n">8.</span>Ma'lumotlarni himoya qilish</h2>
+      <ul>
+        <li>Barcha aloqa HTTPS (TLS) orqali shifrlanadi, HSTS yoqilgan.</li>
+        <li>Ma'lumotlar bazasi Internetdan to'g'ridan-to'g'ri ochiq emas; server faqat himoyalangan proksi orqali ishlaydi.</li>
+        <li>Telegram ma'lumotlari va Click/Payme bildirishnomalari maxfiy kalit (imzo) bilan tekshiriladi; to'lov bildirishnomalari faqat to'lov tizimlarining IP manzillaridan qabul qilinadi.</li>
+        <li>Jurnallarda telefon va karta raqamlari maskalanadi.</li>
+        <li>Boshqaruv paneliga faqat vakolatli administratorlar kiradi; parollar xesh (bcrypt) ko'rinishida saqlanadi, kirish muddati cheklangan.</li>
+        <li>So'rovlar soni cheklanadi (spam va hujumlardan himoya).</li>
+      </ul>
+      <p>
+        Hech bir tizim 100% xavfsizlikni kafolatlay olmaydi. Ma'lumotlar sizib chiqishi aniqlansa,
+        zararni kamaytirish choralarini ko'ramiz va qonunda belgilangan tartibda xabar beramiz.
+      </p>
+
+      <h2 id="uz-9"><span class="n">9.</span>Cookie va qurilma xotirasi</h2>
+      <p>
+        Sayt reklama yoki kuzatuv cookie'larini ishlatmaydi. Brauzer xotirasida (localStorage)
+        faqat sevimli insonlar ro'yxati va keyingi safar uchun kiritgan telefon raqamingiz
+        saqlanadi — bu ma'lumot qurilmangizda qoladi. Uni brauzer sozlamalaridan tozalashingiz mumkin.
+      </p>
+
+      <h2 id="uz-10"><span class="n">10.</span>Huquqlaringiz</h2>
+      <p>Qonunga muvofiq siz quyidagi huquqlarga egasiz:</p>
+      <ul>
+        <li>ma'lumotlaringiz qayta ishlanayotganini bilish va ularning nusxasini olish;</li>
+        <li>noto'g'ri ma'lumotni tuzatish;</li>
+        <li>ma'lumotlaringizni o'chirish yoki anonimlashtirish;</li>
+        <li>rozilikni qaytarib olish;</li>
+        <li>vakolatli davlat organiga yoki sudga shikoyat qilish.</li>
+      </ul>
+      <p>
+        <strong>Qanday murojaat qilinadi.</strong> Telegram'da
+        <a href="https://t.me/uzaidev">@uzaidev</a> ga yoki email orqali yozing. Yordamingizni
+        topishimiz uchun chek havolasini (<code>/chek/…</code>) yoki Telegram username'ingizni
+        ko'rsating. So'rovga 10 ish kuni ichida javob beramiz. Rozilikni qaytarib olish amalga
+        oshgan to'lovlarni bekor qilmaydi: moliyaviy yozuv anonim holda saqlanadi.
+      </p>
+      <p>
+        Mobil ilovadagi ma'lumotlarni o'zingiz o'chirasiz: telefon sozlamalarida ilova
+        ma'lumotlarini tozalang yoki ilovani o'chirib tashlang. Telegram botdan xabar olishni
+        to'xtatish uchun botni bloklang.
+      </p>
+
+      <h2 id="uz-11"><span class="n">11.</span>Bolalar</h2>
+      <p>
+        Platforma 13 yoshga to'lmagan bolalarga mo'ljallanmagan va biz ulardan bilib turib ma'lumot
+        yig'maymiz. Agar ota-ona yoki vasiy sifatida bolangiz bizga ma'lumot berganini bilsangiz,
+        biz bilan bog'laning — ma'lumot o'chiriladi. Voyaga yetmagan yordam oluvchilar haqidagi
+        ma'lumotlar faqat ota-onasi yoki vasiysi roziligi bilan joylanadi (3-bo'lim).
+      </p>
+
+      <h2 id="uz-12"><span class="n">12.</span>Siyosatga o'zgartirishlar</h2>
+      <p>
+        Siyosat yangilanishi mumkin. Yangi tahrir shu sahifada e'lon qilinadi va «Oxirgi yangilanish»
+        sanasi o'zgaradi. Muhim o'zgarishlar haqida sayt yoki Telegram bot orqali xabar beramiz.
+      </p>
+
+      <h2 id="uz-13"><span class="n">13.</span>Aloqa</h2>
+      <p>Maxfiylik bo'yicha savol, so'rov yoki shikoyatingiz bo'lsa:</p>
+      <ul class="contacts">
+        <li><span>Telegram</span><a href="https://t.me/uzaidev">@uzaidev</a></li>
+        <li><span>Email</span><a href="mailto:uzaidev@icloud.com">uzaidev@icloud.com</a></li>
+        <li><span>Telefon</span><a href="tel:+998705039999">+998 70 503 99 99</a></li>
+        <li><span>Telegram bot</span><a href="https://t.me/yaxshilikizlab_bot">@yaxshilikizlab_bot</a></li>
+      </ul>
+    </main>
+
+    <!-- ===================== РУССКИЙ ===================== -->
+    <main id="lang-ru" lang="ru" data-title="Политика конфиденциальности — Yaxshilik Izlab" hidden>
+      <h1>Политика конфиденциальности</h1>
+      <p class="updated">Последнее обновление: 12 сентября 2026 г.</p>
+      <p class="lead">
+        Настоящая политика объясняет, какие данные о пользователях собирает благотворительная
+        платформа «Yaxshilik Izlab», для чего они используются, как долго хранятся и как защищаются.
+      </p>
+
+      <section class="summary">
+        <h2>Кратко</h2>
+        <ul>
+          <li>Регистрация не нужна — нет логина и пароля.</li>
+          <li>Данные вашей карты мы не видим: они вводятся только на странице Click или Payme.</li>
+          <li>Имя и телефон — по желанию. Если отметить «Anonim», ваше имя нигде не показывается.</li>
+          <li>Мы не продаём ваши данные и не используем рекламные и аналитические (трекинговые) сервисы.</li>
+        </ul>
+      </section>
+
+      <h2 id="ru-1"><span class="n">1.</span>Общие положения</h2>
+      <p>Политика распространяется на (далее вместе — «Платформа»):</p>
+      <ul>
+        <li>сайт <a href="https://yaxshilik-izlab.uzaidev.uz">yaxshilik-izlab.uzaidev.uz</a>;</li>
+        <li>Telegram-бот и Mini App <a href="https://t.me/yaxshilikizlab_bot">@yaxshilikizlab_bot</a>;</li>
+        <li>мобильное приложение «Yaxshilik Izlab» (Android и iOS).</li>
+      </ul>
+      <p>
+        Оператор данных — команда платформы «Yaxshilik Izlab» (далее — «мы»). Технический
+        разработчик — UzAiDev. Данные обрабатываются в соответствии с Законом Республики Узбекистан
+        «О персональных данных» (№ ЗРУ-547 от 2 июля 2019 г.).
+      </p>
+      <p>
+        Пользуясь Платформой и отправляя помощь, вы соглашаетесь на обработку ваших данных в
+        порядке, описанном в этой политике. Если вы не согласны, пожалуйста, не пользуйтесь Платформой.
+      </p>
+
+      <h2 id="ru-2"><span class="n">2.</span>Какие данные мы собираем</h2>
+
+      <h3>2.1. Когда вы отправляете помощь</h3>
+      <ul class="rows head">
+        <li><div class="k">Данные</div><div class="v">Для чего</div></li>
+        <li>
+          <div class="k">Сумма, способ оплаты (Click, Payme или карта), дата и время, кому оказана помощь <span class="tag">обязательно</span></div>
+          <div class="v">Проведение платежа, отображение собранной суммы, отчётность</div>
+        </li>
+        <li>
+          <div class="k">Номер транзакции в платёжной системе <span class="tag">автоматически</span></div>
+          <div class="v">Подтверждение платежа и выдача чека</div>
+        </li>
+        <li>
+          <div class="k">Ваше имя <span class="tag opt">по желанию</span></div>
+          <div class="v">Показ в чеке и в ленте «Jonli yordam oqimi» в сокращённом виде</div>
+        </li>
+        <li>
+          <div class="k">Номер телефона <span class="tag opt">по желанию</span></div>
+          <div class="v">Связь с вами, если с платежом возникнет проблема</div>
+        </li>
+      </ul>
+
+      <h3>2.2. Через Telegram (бот и Mini App)</h3>
+      <p>
+        Когда вы открываете Платформу внутри Telegram, Telegram передаёт нам подписанные данные:
+        Telegram ID, имя и фамилию, имя пользователя (username), язык интерфейса и отметку Premium.
+        Подпись проверяется ключом бота — никто не сможет отправить помощь от вашего имени.
+      </p>
+      <p>
+        Номер телефона берётся, только если вы нажмёте кнопку «Telefon raqamni ulashish»
+        (поделиться номером), и сохраняется, чтобы не спрашивать его повторно.
+      </p>
+      <p>
+        Эти данные используются, чтобы показывать историю ваших пожертвований в разделе
+        «Mening yordamlarim», а после оплаты — отправить через бота благодарность и ссылку на чек.
+      </p>
+
+      <h3>2.3. В мобильном приложении</h3>
+      <p>В приложении нет учётной записи. Следующие данные хранятся только в памяти телефона и на сервер не отправляются:</p>
+      <ul>
+        <li>список избранных (сохранённых) людей;</li>
+        <li>имя и телефон для автозаполнения формы (если вы их ввели);</li>
+        <li>история ваших пожертвований (номер, сумма, статус) — для раздела «Yordamlarim».</li>
+      </ul>
+      <p>
+        Чтобы обновить статус незавершённого платежа, приложение отправляет на сервер только номер
+        пожертвования. Данные платежа (п. 2.1) передаются на сервер только при отправке помощи.
+      </p>
+      <p>
+        Приложение использует только разрешение на доступ в Интернет. Доступ к камере, геолокации,
+        контактам, микрофону, файлам и рекламному идентификатору не запрашивается, push-уведомления
+        не отправляются.
+      </p>
+
+      <h3>2.4. Технические данные</h3>
+      <p>
+        Как и любой веб-сервис, сервер при обработке запроса видит IP-адрес, тип браузера или
+        приложения и время запроса. Эти данные используются для безопасности (защита от атак и спама,
+        ограничение числа запросов) и поиска ошибок.
+      </p>
+      <p>
+        Каждый запрос к Click и Payme записывается в журнал платежей, чтобы служить доказательством
+        в спорных ситуациях. Номера телефонов и карт в журнале маскируются, подписи и пароли не
+        записываются вовсе.
+      </p>
+
+      <h3>2.5. Перевод на карту</h3>
+      <p>
+        Если вы переводите деньги из банковского приложения на карту Uzcard или Humo сборщика, мы не
+        получаем о вас никаких персональных данных. Из уведомления банка владельцу карты берутся
+        только сумма, время и последние 4 цифры карты-получателя; такая помощь всегда отображается
+        как «Anonim».
+      </p>
+
+      <h3>2.6. Что мы не собираем</h3>
+      <ul>
+        <li>номер вашей банковской карты, срок действия, CVV/CVC и SMS-коды — они вводятся только на странице Click или Payme и до нас не доходят;</li>
+        <li>пароли (у доноров нет учётных записей);</li>
+        <li>геолокацию, список контактов, фото и файлы;</li>
+        <li>биометрические данные и рекламные идентификаторы.</li>
+      </ul>
+
+      <h2 id="ru-3"><span class="n">3.</span>Данные получателей помощи</h2>
+      <p>
+        Цель Платформы — рассказать историю нуждающихся людей и собрать для них помощь. Поэтому на
+        странице человека показываются имя, возраст, регион, фотографии, история, описание болезни
+        или нужды, медицинское учреждение, необходимая и собранная сумма. В направлении
+        «Строительство дома» также указываются сведения о семье: район проживания, число членов
+        семьи, возраст детей, основной кормилец, ФИО матери и контактное лицо. Для помощи переводом
+        на карту может указываться номер карты сборщика и имя её владельца.
+      </p>
+      <ul>
+        <li>Эти данные размещаются только с согласия самого человека или его законного представителя (для несовершеннолетних — родителей или опекуна).</li>
+        <li>Сведения о здоровье показываются лишь в объёме, необходимом для объяснения просьбы о помощи.</li>
+        <li>Человек или его представитель в любой момент может попросить исправить или сократить данные либо закрыть страницу. Финансовые записи по полученной помощи сохраняются для отчётности, а страница убирается из публичного доступа.</li>
+      </ul>
+      <p>Имена, должности и фотографии членов команды проекта также публикуются с их согласия.</p>
+
+      <h2 id="ru-4"><span class="n">4.</span>Цели использования данных</h2>
+      <ul>
+        <li>приём помощи и подтверждение платежа;</li>
+        <li>открытое отображение собранной и оставшейся суммы, а также результатов;</li>
+        <li>выдача чека и отправка благодарности через Telegram;</li>
+        <li>связь с вами при проблемах с платежом;</li>
+        <li>защита от мошенничества, атак и злоупотреблений;</li>
+        <li>финансовая отчётность и выполнение требований закона.</li>
+      </ul>
+      <p class="note">
+        Ваши данные не используются для рекламы, маркетинга или профилирования, и на их основе не
+        принимаются автоматизированные решения.
+      </p>
+
+      <h2 id="ru-5"><span class="n">5.</span>Что видно публично</h2>
+      <p>Для прозрачности каждое оплаченное пожертвование отображается открыто — но в защищённом виде:</p>
+      <ul>
+        <li>В ленте «Jonli yordam oqimi» и в чеке: сумма, кому, дата и сокращённое имя (например, «Aziz K.»). Если выбрано «Anonim» — только «Anonim».</li>
+        <li>Ваш номер телефона и Telegram ID никогда не показываются публично.</li>
+        <li>Чек (<code>/chek/…</code>) может открыть любой, у кого есть ссылка; для неоплаченной записи детали не показываются.</li>
+        <li>О каждом платеже отправляется сообщение во внутреннюю Telegram-группу команды проекта: сумма, кому, способ оплаты и — если помощь не анонимная — ваше имя и username в Telegram. Номер телефона всегда замаскирован. Группа используется только для учёта и контроля.</li>
+      </ul>
+
+      <h2 id="ru-6"><span class="n">6.</span>Передача третьим лицам</h2>
+      <p>Мы не продаём и не сдаём ваши данные в аренду. Они передаются только в объёме, необходимом для работы сервиса:</p>
+      <ul class="rows head">
+        <li><div class="k">Сервис</div><div class="v">Для чего и что передаётся</div></li>
+        <li><div class="k">Click</div><div class="v">Оплата. Передаются сумма и номер пожертвования; данные карты обрабатывает сам Click.</div></li>
+        <li><div class="k">Payme</div><div class="v">Оплата. Передаются сумма и номер пожертвования; данные карты обрабатывает сам Payme.</div></li>
+        <li><div class="k">Telegram</div><div class="v">Бот, Mini App и сообщения (благодарность, ссылка на чек, уведомление в группе команды). На сайте подключается Telegram Web App SDK.</div></li>
+        <li><div class="k">Google Fonts</div><div class="v">Загрузка шрифтов на сайте — при этом ваш IP-адрес виден Google. В мобильном приложении шрифты встроены, запросы не отправляются.</div></li>
+        <li><div class="k">Хостинг-провайдер</div><div class="v">Серверы, на которых хранятся данные Платформы.</div></li>
+      </ul>
+      <p>
+        У каждого сервиса своя политика конфиденциальности. На Платформе нет рекламных сетей,
+        аналитики и средств отслеживания (Google Analytics, Firebase, Facebook SDK и т. п.).
+      </p>
+      <p>В случаях, предусмотренных законом, данные могут быть предоставлены по официальному запросу уполномоченных государственных органов.</p>
+      <p>
+        <strong>Трансграничная передача.</strong> Серверы Telegram, Google и хостинг-провайдера
+        могут находиться за пределами Узбекистана. Пользуясь Платформой, вы соглашаетесь на передачу
+        данных через эти сервисы.
+      </p>
+
+      <h2 id="ru-7"><span class="n">7.</span>Сроки хранения</h2>
+      <ul class="rows head">
+        <li><div class="k">Данные</div><div class="v">Срок</div></li>
+        <li><div class="k">Записи о платежах (сумма, дата, кому, имя, телефон)</div><div class="v">В течение срока, необходимого для финансовой отчётности и требуемого законом. По вашему запросу имя и телефон удаляются, запись остаётся анонимной.</div></li>
+        <li><div class="k">Профиль Telegram (пользователь бота)</div><div class="v">Пока вы пользуетесь ботом или до запроса на удаление.</div></li>
+        <li><div class="k">Журнал платежей (замаскированный)</div><div class="v">Вместе с записями о платежах — для разрешения споров.</div></li>
+        <li><div class="k">Журналы сервера (IP, время)</div><div class="v">14 дней, затем удаляются автоматически.</div></li>
+        <li><div class="k">Резервные копии базы данных</div><div class="v">Создаются ежедневно, хранятся 14 дней.</div></li>
+        <li><div class="k">Данные на устройстве (приложение, память браузера)</div><div class="v">Пока вы их не удалите или не удалите приложение.</div></li>
+      </ul>
+
+      <h2 id="ru-8"><span class="n">8.</span>Защита данных</h2>
+      <ul>
+        <li>Все соединения шифруются по HTTPS (TLS), включён HSTS.</li>
+        <li>База данных недоступна напрямую из Интернета; сервер работает только через защищённый прокси.</li>
+        <li>Данные Telegram и уведомления Click/Payme проверяются секретным ключом (подписью); платёжные уведомления принимаются только с IP-адресов платёжных систем.</li>
+        <li>В журналах номера телефонов и карт маскируются.</li>
+        <li>В панель управления входят только уполномоченные администраторы; пароли хранятся в виде хеша (bcrypt), время сессии ограничено.</li>
+        <li>Число запросов ограничено (защита от спама и атак).</li>
+      </ul>
+      <p>
+        Ни одна система не гарантирует 100% безопасности. При обнаружении утечки мы примем меры для
+        снижения ущерба и уведомим о ней в порядке, установленном законом.
+      </p>
+
+      <h2 id="ru-9"><span class="n">9.</span>Cookie и память устройства</h2>
+      <p>
+        Сайт не использует рекламные или отслеживающие cookie. В памяти браузера (localStorage)
+        хранятся только список избранных и номер телефона, который вы ввели для следующего раза, —
+        эти данные остаются на вашем устройстве. Их можно очистить в настройках браузера.
+      </p>
+
+      <h2 id="ru-10"><span class="n">10.</span>Ваши права</h2>
+      <p>В соответствии с законом вы вправе:</p>
+      <ul>
+        <li>знать, обрабатываются ли ваши данные, и получить их копию;</li>
+        <li>исправить неверные данные;</li>
+        <li>удалить или обезличить свои данные;</li>
+        <li>отозвать согласие;</li>
+        <li>обратиться с жалобой в уполномоченный государственный орган или в суд.</li>
+      </ul>
+      <p>
+        <strong>Как обратиться.</strong> Напишите в Telegram <a href="https://t.me/uzaidev">@uzaidev</a>
+        или на email. Чтобы мы нашли ваше пожертвование, укажите ссылку на чек (<code>/chek/…</code>)
+        или ваш username в Telegram. Мы ответим в течение 10 рабочих дней. Отзыв согласия не отменяет
+        уже проведённых платежей: финансовая запись сохраняется в обезличенном виде.
+      </p>
+      <p>
+        Данные в мобильном приложении вы удаляете сами: очистите данные приложения в настройках
+        телефона или удалите приложение. Чтобы не получать сообщения от Telegram-бота, заблокируйте его.
+      </p>
+
+      <h2 id="ru-11"><span class="n">11.</span>Дети</h2>
+      <p>
+        Платформа не предназначена для детей младше 13 лет, и мы сознательно не собираем их данные.
+        Если вы родитель или опекун и узнали, что ребёнок передал нам данные, свяжитесь с нами — мы
+        их удалим. Данные несовершеннолетних получателей помощи публикуются только с согласия
+        родителей или опекуна (раздел 3).
+      </p>
+
+      <h2 id="ru-12"><span class="n">12.</span>Изменения политики</h2>
+      <p>
+        Политика может обновляться. Новая редакция публикуется на этой странице, а дата «Последнее
+        обновление» меняется. О существенных изменениях мы сообщим на сайте или через Telegram-бота.
+      </p>
+
+      <h2 id="ru-13"><span class="n">13.</span>Контакты</h2>
+      <p>По вопросам конфиденциальности, запросам и жалобам:</p>
+      <ul class="contacts">
+        <li><span>Telegram</span><a href="https://t.me/uzaidev">@uzaidev</a></li>
+        <li><span>Email</span><a href="mailto:uzaidev@icloud.com">uzaidev@icloud.com</a></li>
+        <li><span>Телефон</span><a href="tel:+998705039999">+998 70 503 99 99</a></li>
+        <li><span>Telegram-бот</span><a href="https://t.me/yaxshilikizlab_bot">@yaxshilikizlab_bot</a></li>
+      </ul>
+    </main>
+
+    <!-- ===================== ENGLISH ===================== -->
+    <main id="lang-en" lang="en" data-title="Privacy Policy — Yaxshilik Izlab" hidden>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: September 12, 2026</p>
+      <p class="lead">
+        This policy explains what information the Yaxshilik Izlab charity platform collects about
+        its users, why it is used, how long it is kept and how it is protected.
+      </p>
+
+      <section class="summary">
+        <h2>In short</h2>
+        <ul>
+          <li>No registration needed — no login, no password.</li>
+          <li>We never see your card details: they are entered only on the Click or Payme page.</li>
+          <li>Your name and phone number are optional. If you tick "Anonim" (anonymous), your name is not shown anywhere.</li>
+          <li>We do not sell your data, and we do not use advertising or analytics (tracking) services.</li>
+        </ul>
+      </section>
+
+      <h2 id="en-1"><span class="n">1.</span>General</h2>
+      <p>This policy applies to the following (together, the "Platform"):</p>
+      <ul>
+        <li>the website <a href="https://yaxshilik-izlab.uzaidev.uz">yaxshilik-izlab.uzaidev.uz</a>;</li>
+        <li>the Telegram bot and Mini App <a href="https://t.me/yaxshilikizlab_bot">@yaxshilikizlab_bot</a>;</li>
+        <li>the Yaxshilik Izlab mobile app (Android and iOS).</li>
+      </ul>
+      <p>
+        The data controller is the Yaxshilik Izlab platform team ("we", "us"). Technical developer:
+        UzAiDev. Data is processed in accordance with the Law of the Republic of Uzbekistan
+        "On Personal Data" (No. ZRU-547 of 2 July 2019).
+      </p>
+      <p>
+        By using the Platform and sending a donation, you consent to your data being processed as
+        described in this policy. If you do not agree, please do not use the Platform.
+      </p>
+
+      <h2 id="en-2"><span class="n">2.</span>Information we collect</h2>
+
+      <h3>2.1. When you donate</h3>
+      <ul class="rows head">
+        <li><div class="k">Information</div><div class="v">Why</div></li>
+        <li>
+          <div class="k">Amount, payment method (Click, Payme or card), date and time, and who the donation is for <span class="tag">required</span></div>
+          <div class="v">To process the payment, show the amount raised, and for reporting</div>
+        </li>
+        <li>
+          <div class="k">Transaction ID from the payment system <span class="tag">automatic</span></div>
+          <div class="v">To confirm the payment and issue a receipt</div>
+        </li>
+        <li>
+          <div class="k">Your name <span class="tag opt">optional</span></div>
+          <div class="v">Shown, shortened, on the receipt and in the live donations feed ("Jonli yordam oqimi")</div>
+        </li>
+        <li>
+          <div class="k">Your phone number <span class="tag opt">optional</span></div>
+          <div class="v">To contact you if something goes wrong with the payment</div>
+        </li>
+      </ul>
+
+      <h3>2.2. Via Telegram (bot and Mini App)</h3>
+      <p>
+        When you open the Platform inside Telegram, Telegram passes us signed data: your Telegram ID,
+        first and last name, username, interface language and Premium status. The signature is
+        verified with the bot key, so nobody can donate on your behalf.
+      </p>
+      <p>
+        Your phone number is obtained only if you tap "Telefon raqamni ulashish" (share phone number),
+        and it is saved so that you are not asked again.
+      </p>
+      <p>
+        This data is used to show your donation history in the "Mening yordamlarim" (my donations)
+        section and, after payment, to send you a thank-you message and a receipt link via the bot.
+      </p>
+
+      <h3>2.3. In the mobile app</h3>
+      <p>The mobile app has no accounts. The following is stored only on your phone and is not sent to our server:</p>
+      <ul>
+        <li>your list of favourite (saved) people;</li>
+        <li>your name and phone number, to pre-fill the form next time (if you entered them);</li>
+        <li>your donation history (donation number, amount, status) for the "Yordamlarim" tab.</li>
+      </ul>
+      <p>
+        To refresh the status of an unfinished payment, the app sends only the donation number to the
+        server. Payment information (section 2.1) is sent to the server only when you make a donation.
+      </p>
+      <p>
+        The app uses only the Internet permission. It does not request access to the camera,
+        location, contacts, microphone, files or advertising ID, and it does not send push notifications.
+      </p>
+
+      <h3>2.4. Technical data</h3>
+      <p>
+        Like any web service, our server sees the IP address, browser or app type and time of each
+        request. This is used for security (protection against attacks and spam, rate limiting) and
+        for troubleshooting.
+      </p>
+      <p>
+        Every request exchanged with Click and Payme is recorded in a payment log so that it can serve
+        as evidence in case of a dispute. Phone and card numbers are masked in this log, and
+        signatures and passwords are never recorded.
+      </p>
+
+      <h3>2.5. Card transfers</h3>
+      <p>
+        If you transfer money from your banking app to a fundraiser's Uzcard or Humo card, we receive
+        no personal information about you. From the bank's notification to the card owner we take only
+        the amount, the time and the last 4 digits of the receiving card; such donations are always
+        shown as "Anonim" (anonymous).
+      </p>
+
+      <h3>2.6. What we do not collect</h3>
+      <ul>
+        <li>your bank card number, expiry date, CVV/CVC or SMS codes — these are entered only on the Click or Payme page and never reach us;</li>
+        <li>passwords (donors have no accounts);</li>
+        <li>location, contact lists, photos or files;</li>
+        <li>biometric data or advertising identifiers.</li>
+      </ul>
+
+      <h2 id="en-3"><span class="n">3.</span>Information about beneficiaries</h2>
+      <p>
+        The purpose of the Platform is to share the stories of people in need and raise help for
+        them. A person's page therefore shows their name, age, region, photos, story, a description of
+        the illness or need, the medical facility, and the amount needed and raised. For the
+        "House construction" category, family details are also shown: area of residence, number of
+        family members, children's ages, main breadwinner, mother's full name and a contact person.
+        For card donations, the fundraising card number and the cardholder's name may be shown.
+      </p>
+      <ul>
+        <li>This information is published only with the consent of the person or their legal representative (for minors — a parent or guardian).</li>
+        <li>Health information is shown only to the extent needed to explain the request for help.</li>
+        <li>The person or their representative may at any time ask us to correct or reduce the information, or to close the page. Financial records of donations received are kept for reporting, and the page is removed from public view.</li>
+      </ul>
+      <p>Names, roles and photos of the project team are also published with their consent.</p>
+
+      <h2 id="en-4"><span class="n">4.</span>How we use information</h2>
+      <ul>
+        <li>to accept donations and confirm payments;</li>
+        <li>to show openly the amount raised, the amount remaining and the results;</li>
+        <li>to issue receipts and send thank-you messages via Telegram;</li>
+        <li>to contact you if there is a problem with a payment;</li>
+        <li>to protect against fraud, attacks and abuse;</li>
+        <li>for financial reporting and to comply with the law.</li>
+      </ul>
+      <p class="note">
+        Your data is not used for advertising, marketing or profiling, and no automated decisions are
+        made on its basis.
+      </p>
+
+      <h2 id="en-5"><span class="n">5.</span>What is public</h2>
+      <p>For transparency, every paid donation is shown publicly — but in a protected form:</p>
+      <ul>
+        <li>In the live donations feed and on the receipt: amount, recipient, date and a shortened name (e.g. "Aziz K."). If "Anonim" is chosen — only "Anonim".</li>
+        <li>Your phone number and Telegram ID are never shown publicly.</li>
+        <li>Anyone with the link can open a receipt (<code>/chek/…</code>); no details are shown for unpaid records.</li>
+        <li>For every payment, a message is posted to the project team's internal Telegram group: amount, recipient, payment method and — unless the donation is anonymous — your name and Telegram username. The phone number is always masked. The group is used only for accounting and oversight.</li>
+      </ul>
+
+      <h2 id="en-6"><span class="n">6.</span>Sharing with third parties</h2>
+      <p>We do not sell or rent your data. It is shared only as far as needed for the service to work:</p>
+      <ul class="rows head">
+        <li><div class="k">Service</div><div class="v">Why, and what is shared</div></li>
+        <li><div class="k">Click</div><div class="v">Payment. The amount and donation number are shared; card data is processed by Click itself.</div></li>
+        <li><div class="k">Payme</div><div class="v">Payment. The amount and donation number are shared; card data is processed by Payme itself.</div></li>
+        <li><div class="k">Telegram</div><div class="v">Bot, Mini App and messages (thank-you message, receipt link, team group notice). The website loads the Telegram Web App SDK.</div></li>
+        <li><div class="k">Google Fonts</div><div class="v">Loading fonts on the website — your IP address is visible to Google when this happens. The mobile app bundles its fonts, so no requests are sent.</div></li>
+        <li><div class="k">Hosting provider</div><div class="v">The servers where Platform data is stored.</div></li>
+      </ul>
+      <p>
+        Each service has its own privacy policy. The Platform contains no advertising networks,
+        analytics or tracking tools (Google Analytics, Firebase, Facebook SDK, etc.).
+      </p>
+      <p>Where required by law, data may be disclosed in response to an official request from authorised government bodies.</p>
+      <p>
+        <strong>International transfers.</strong> The servers of Telegram, Google and our hosting
+        provider may be located outside Uzbekistan. By using the Platform, you consent to data being
+        transferred through these services.
+      </p>
+
+      <h2 id="en-7"><span class="n">7.</span>Retention</h2>
+      <ul class="rows head">
+        <li><div class="k">Information</div><div class="v">How long</div></li>
+        <li><div class="k">Payment records (amount, date, recipient, name, phone)</div><div class="v">As long as required for financial reporting and by law. On request, your name and phone number are deleted and the record stays anonymous.</div></li>
+        <li><div class="k">Telegram profile (bot user)</div><div class="v">While you use the bot, or until you ask us to delete it.</div></li>
+        <li><div class="k">Payment log (masked)</div><div class="v">Together with payment records, to resolve disputes.</div></li>
+        <li><div class="k">Server logs (IP, time)</div><div class="v">14 days, then deleted automatically.</div></li>
+        <li><div class="k">Database backups</div><div class="v">Made daily, kept for 14 days.</div></li>
+        <li><div class="k">Data on your device (app, browser storage)</div><div class="v">Until you delete it or uninstall the app.</div></li>
+      </ul>
+
+      <h2 id="en-8"><span class="n">8.</span>Security</h2>
+      <ul>
+        <li>All connections are encrypted with HTTPS (TLS); HSTS is enabled.</li>
+        <li>The database is not directly reachable from the Internet; the server is accessible only through a protected proxy.</li>
+        <li>Telegram data and Click/Payme notifications are verified with a secret key (signature); payment notifications are accepted only from the payment systems' IP addresses.</li>
+        <li>Phone and card numbers are masked in logs.</li>
+        <li>Only authorised administrators can access the admin panel; passwords are stored as hashes (bcrypt), and sessions expire.</li>
+        <li>Requests are rate-limited (protection against spam and attacks).</li>
+      </ul>
+      <p>
+        No system can guarantee 100% security. If we discover a data breach, we will take steps to
+        limit the harm and give notice as required by law.
+      </p>
+
+      <h2 id="en-9"><span class="n">9.</span>Cookies and device storage</h2>
+      <p>
+        The website does not use advertising or tracking cookies. Browser storage (localStorage) keeps
+        only your favourites list and the phone number you entered for next time — this data stays on
+        your device. You can clear it in your browser settings.
+      </p>
+
+      <h2 id="en-10"><span class="n">10.</span>Your rights</h2>
+      <p>Under the law, you have the right to:</p>
+      <ul>
+        <li>know whether your data is processed and get a copy of it;</li>
+        <li>correct inaccurate data;</li>
+        <li>delete or anonymise your data;</li>
+        <li>withdraw your consent;</li>
+        <li>lodge a complaint with the authorised government body or a court.</li>
+      </ul>
+      <p>
+        <strong>How to make a request.</strong> Message <a href="https://t.me/uzaidev">@uzaidev</a> on
+        Telegram or email us. To help us find your donation, include the receipt link
+        (<code>/chek/…</code>) or your Telegram username. We will respond within 10 business days.
+        Withdrawing consent does not reverse payments already made: the financial record is kept in
+        anonymised form.
+      </p>
+      <p>
+        You control the data in the mobile app yourself: clear the app's data in your phone settings
+        or uninstall the app. To stop receiving messages from the Telegram bot, block it.
+      </p>
+
+      <h2 id="en-11"><span class="n">11.</span>Children</h2>
+      <p>
+        The Platform is not directed at children under 13, and we do not knowingly collect their data.
+        If you are a parent or guardian and learn that your child has provided us with data, contact
+        us and we will delete it. Information about beneficiaries who are minors is published only
+        with the consent of a parent or guardian (section 3).
+      </p>
+
+      <h2 id="en-12"><span class="n">12.</span>Changes to this policy</h2>
+      <p>
+        This policy may be updated. The new version is published on this page and the "Last updated"
+        date changes. We will announce significant changes on the website or via the Telegram bot.
+      </p>
+
+      <h2 id="en-13"><span class="n">13.</span>Contact</h2>
+      <p>For privacy questions, requests or complaints:</p>
+      <ul class="contacts">
+        <li><span>Telegram</span><a href="https://t.me/uzaidev">@uzaidev</a></li>
+        <li><span>Email</span><a href="mailto:uzaidev@icloud.com">uzaidev@icloud.com</a></li>
+        <li><span>Phone</span><a href="tel:+998705039999">+998 70 503 99 99</a></li>
+        <li><span>Telegram bot</span><a href="https://t.me/yaxshilikizlab_bot">@yaxshilikizlab_bot</a></li>
+      </ul>
+    </main>
+
+    <footer>
+      © 2026 Yaxshilik Izlab · «Bizni kutar, biz kutgan kunlar!» ·
+      <a href="https://yaxshilik-izlab.uzaidev.uz">yaxshilik-izlab.uzaidev.uz</a>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var LANGS = ["uz", "ru", "en"];
+      var buttons = document.querySelectorAll(".langs button");
+
+      function show(lang, updateUrl) {
+        LANGS.forEach(function (l) {
+          document.getElementById("lang-" + l).hidden = l !== lang;
+        });
+        buttons.forEach(function (b) {
+          b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+        });
+        var main = document.getElementById("lang-" + lang);
+        document.documentElement.lang = lang;
+        document.title = main.dataset.title;
+        if (updateUrl && window.history && history.replaceState) {
+          var url = new URL(location.href);
+          url.searchParams.set("lang", lang);
+          url.hash = "";
+          history.replaceState(null, "", url);
+        }
+      }
+
+      // Tanlov: ?lang=ru|en|uz → brauzer tili → o'zbekcha
+      function initial() {
+        var q = new URLSearchParams(location.search).get("lang");
+        if (LANGS.indexOf(q) >= 0) return q;
+        var hash = location.hash.replace("#", "").split("-")[0];
+        if (LANGS.indexOf(hash) >= 0) return hash;
+        var prefs = navigator.languages || [navigator.language || ""];
+        for (var i = 0; i < prefs.length; i++) {
+          var code = String(prefs[i] || "").slice(0, 2).toLowerCase();
+          if (LANGS.indexOf(code) >= 0) return code;
+        }
+        return "uz";
+      }
+
+      buttons.forEach(function (b) {
+        b.addEventListener("click", function () {
+          show(b.dataset.lang, true);
+          window.scrollTo(0, 0);
+        });
+      });
+      show(initial(), false);
+    })();
+  </script>
+</body>
+</html>
